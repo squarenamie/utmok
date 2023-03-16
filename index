@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一鍵更改utm</title>
+    <style>
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input-wrapper {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .input-wrapper input[type="text"] {
+            width: 100%;
+            max-width: 800px;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+            box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+        }
+
+        .input-wrapper input[type="text"]:focus {
+            outline: none;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2), 0px 0px 4px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .button-groups {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            margin: 0 20px;
+        }
+
+        .group-title {
+            margin: 10px 0;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .btn-facebook {
+            background-color: #1877f2;
+            background-image: linear-gradient(to bottom, #1e87f0, #166fe5);
+        }
+
+        .btn-line {
+            background-color: #00c300;
+            background-image: linear-gradient(to bottom, #00d400, #00bd00);
+        }
+
+        .btn-instagram {
+            background-color: #833ab4;
+            background-image: linear-gradient(to bottom, #a72bb3, #da22a7);
+        }
+
+        .btn-youtube {
+            background-color: #ff0000;
+            background-image: linear-gradient(to bottom, #ff0000, #e10000);
+        }
+
+        .btn-twitter {
+            background-color: #1da1f2;
+            background-image: linear-gradient(to bottom, #1da1f2, #0d8ecf);
+        }
+
+        .btn:focus,
+        .btn:hover {
+            outline: none;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .copy-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            padding: 10px;
+            font-size: 14px;
+            color: #333333;
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="input-wrapper">
+            <input type="text" id="input-url" placeholder="輸入文稿網址" onfocus="this.placeholder=''" onblur="this.placeholder='輸入文稿網址'">
+        </div>
+        <div class="button-groups">
+            <div class="button-group">
+                <h2 class="group-title">Facebook</h2>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=chinatimes&utm_source=facebook&utm_medium=post')">中時貼文</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=chinatimes&utm_source=facebook&utm_medium=comment')">中時留言</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=wwcte&utm_source=facebook&utm_medium=post')">娛樂貼文</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=wwcte&utm_source=facebook&utm_medium=comment')">娛樂留言</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=truemii&utm_source=facebook&utm_medium=post')">觸mii貼文</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=truemii&utm_source=facebook&utm_medium=comment')">觸mii留言</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=CTvideos&utm_source=facebook&utm_medium=post')">即影音貼文</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=CTvideos&utm_source=facebook&utm_medium=comment')">即影音留言</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=wantrich&utm_source=facebook&utm_medium=post')">旺得富貼文</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=wantrich&utm_source=facebook&utm_medium=comment')">旺得富留言</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=campus&utm_source=facebook&utm_medium=post')">Campus貼文</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=campus&utm_source=facebook&utm_medium=comment')">Campus留言</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=fashion&utm_source=facebook&utm_medium=post')">Fashion貼文</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=fashion&utm_source=facebook&utm_medium=comment')">Fashion留言</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=sports&utm_source=facebook&utm_medium=post')">體育貼文</button>
+                <button class="btn btn-facebook"
+                    onclick="addText('from=sports&utm_source=facebook&utm_medium=comment')">體育留言</button>
+            </div>
+
+            <div class="button-group">
+                <h2 class="group-title">LINE</h2>
+                <button class="btn btn-line" onclick="addText('utm_source=push&utm_medium=image')">推播圖片</button>
+                <button class="btn btn-line" onclick="addText('utm_source=push&utm_medium=wall')">貼文串</button>
+                <button class="btn btn-line" onclick="addText('utm_source=push&utm_medium=video')">推播影片</button>
+            </div>
+
+            <div class="button-group">
+                <h2 class="group-title">Instagram</h2>
+                <button class="btn btn-instagram"
+                    onclick="addText('from=chinatimes&utm_source=instagram&utm_medium=post')">中時IG貼文</button>
+                <button class="btn btn-instagram"
+                    onclick="addText('from=chinatimes&utm_source=instagram&utm_medium=story')">中時限動</button>
+                <button class="btn btn-instagram"
+                    onclick="addText('from=wwcte&utm_source=instagram&utm_medium=post')">娛樂IG貼文</button>
+                <button class="btn btn-instagram"
+                    onclick="addText('from=wwcte&utm_source=instagram&utm_medium=story')">娛樂限動</button>
+                <button class="btn btn-instagram"
+                    onclick="addText('from=truemii&utm_source=instagram&utm_medium=post')">觸miiIG貼文</button>
+                <button class="btn btn-instagram"
+                    onclick="addText('from=truemii&utm_source=instagram&utm_medium=story')">觸miiIG限動</button>
+            </div>
+            <div class="button-group">
+                <h2 class="group-title">Youtube</h2>
+                <button class="btn btn-youtube"
+                    onclick="addText('from=chinatimes&utm_source=youtube&utm_medium=video')">中時YT影音</button>
+                <button class="btn btn-youtube"
+                    onclick="addText('from=chinatimes&utm_source=youtube&utm_medium=post')">中時YT社群</button>
+                <button class="btn btn-youtube"
+                    onclick="addText('from=chinatimes&utm_source=youtube&utm_medium=live')">中時YT直播</button>
+                <button class="btn btn-youtube"
+                    onclick="addText('from=wwcte&utm_source=youtube&utm_medium=video')">娛樂YT影音</button>
+                <button class="btn btn-youtube"
+                    onclick="addText('from=wwcte&utm_source=youtube&utm_medium=post')">娛樂YT社群</button>
+                <button class="btn btn-youtube"
+                    onclick="addText('from=wwcte&utm_source=youtube&utm_medium=live')">娛樂YT直播</button>
+            </div>
+
+            <div class="button-group">
+                <h2 class="group-title">twitter</h2>
+                <button class="btn btn-twitter"
+                    onclick="addText('from=chinatimes&utm_source=twitter&utm_medium=post')">中時推特貼文</button>
+                <button class="btn btn-twitter"
+                    onclick="addText('from=chinatimes&utm_source=twitter&utm_medium=video')">中時推特影音</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function addText(text) {
+            var input = document.getElementById("input-url");
+            var url = input.value.trim();
+            var index = url.indexOf("?");
+            if (index != -1) {
+                url = url.substring(0, index);
+            }
+            var newUrl = url + "?" + text;
+            navigator.clipboard.writeText(newUrl);
+
+            // create the message element
+            var message = document.createElement("div");
+            message.innerText = "已複製到剪貼簿";
+            message.classList.add("copy-message");
+            document.body.appendChild(message);
+
+            // set timeout to remove message after 2 seconds
+            setTimeout(function () {
+                document.body.removeChild(message);
+            }, 2000);
+        }
+    </script>
+
+</body>
+
+</html>
